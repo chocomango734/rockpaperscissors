@@ -1,4 +1,7 @@
-// this game is rock paper scissors
+/* January 2025
+This is a classic game of rock paper scissors. The user plays five rounds against the computer.
+Rock beats scissors, scissors beats paper, and paper beats rock.
+*/
 
 //define global variables
 let humanScore = 0;
@@ -15,7 +18,7 @@ function getComputerChoice(){
     } else {
         return "scissors";
     }
-    
+
 }
 
 // this function asks the user for their choice and returns that string
@@ -25,7 +28,7 @@ function getHumanChoice(){
     let userChoice = prompt("Enter your choice: R, P, S").toUpperCase();
     
     while (!possibleChoices.includes(userChoice)){
-        userChoice = prompt("That is not a valid input!");
+        userChoice = prompt("That is not a valid input! Please enter a different input: R, P, S").toUpperCase();
     }
 
     if (userChoice == "R"){
@@ -37,9 +40,9 @@ function getHumanChoice(){
     }
 }
 
+// this function plays one round of r,p,s
 function playRound(humanChoice, computerChoice){
-    console.log(`The computer played ${computerChoice} and you played ${humanChoice}.`)
-
+    
     if (humanChoice == computerChoice) {
         console.log(`You tied with ${humanChoice}!`);
     }else if (
@@ -55,6 +58,30 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
+//this function allows the player to play one full game with 5 rounds
+function playGame(){
+ 
+    for (let i = 0; i < 5; i ++){
+        const human = getHumanChoice();
+        const computer = getComputerChoice();
+
+        playRound(human, computer);
+        console.log(`Computer's score: ${computerScore}`);
+        console.log(`Your score: ${humanScore}`);
+    }
+
+    console.log(`Final Score: \nYour Score: ${humanScore}\nComputer Score: ${computerScore}`)
+    if (humanScore > computerScore){
+        console.log("You beat the computer!");
+    } else if (computerScore > humanScore){
+        console.log("You lost to the computer");
+    } else {
+        console.log("You tied with the computer")
+    }
+}
+
+
+playGame();
 
 
 
