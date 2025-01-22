@@ -4,16 +4,16 @@ Rock beats scissors, scissors beats paper, and paper beats rock.
 */
 
 //define global variables
-let humanScore = 0;
+let userScore = 0;
 let computerScore = 0;
 
 //this function randomizes the computer's choice and returns that string
 function getComputerChoice(){
-    let compChoice = Math.floor(Math.random() * 3);
+    let computerChoice = Math.floor(Math.random() * 3);
 
-    if (compChoice == 0){
+    if (computerChoice == 0){
         return "rock";
-    } else if (compChoice == 1){
+    } else if (computerChoice == 1){
         return "paper";
     } else {
         return "scissors";
@@ -22,7 +22,7 @@ function getComputerChoice(){
 }
 
 // this function asks the user for their choice and returns that string
-function getHumanChoice(){
+function getUserChoice(){
     let possibleChoices = ["R", "P", "S"];
 
     let userChoice = prompt("Enter your choice: R, P, S").toUpperCase();
@@ -41,19 +41,19 @@ function getHumanChoice(){
 }
 
 // this function plays one round of r,p,s
-function playRound(humanChoice, computerChoice){
+function playRound(userChoice, computerChoice){
     
-    if (humanChoice == computerChoice) {
-        console.log(`You tied with ${humanChoice}!`);
+    if (userChoice == computerChoice) {
+        console.log(`You tied with ${userChoice}!`);
     }else if (
-        (humanChoice == "rock" && computerChoice == "scissors") || 
-        (humanChoice == "scissors" && computerChoice == "paper") ||  
-        (humanChoice == "paper" && computerChoice == "rock")
+        (userChoice == "rock" && computerChoice == "scissors") || 
+        (userChoice == "scissors" && computerChoice == "paper") ||  
+        (userChoice == "paper" && computerChoice == "rock")
     ){
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
-        humanScore += 1;
+        console.log(`You won! ${userChoice} beats ${computerChoice}`);
+        userScore += 1;
     } else {
-        console.log(`You lost :( ${humanChoice} loses to ${computerChoice}`);
+        console.log(`You lost :( ${userChoice} loses to ${computerChoice}`);
         computerScore += 1;
     }
 }
@@ -62,18 +62,18 @@ function playRound(humanChoice, computerChoice){
 function playGame(){
  
     for (let i = 0; i < 5; i ++){
-        const human = getHumanChoice();
+        const user = getUserChoice();
         const computer = getComputerChoice();
 
-        playRound(human, computer);
+        playRound(user, computer);
         console.log(`Computer's score: ${computerScore}`);
-        console.log(`Your score: ${humanScore}`);
+        console.log(`Your score: ${userScore}`);
     }
 
-    console.log(`Final Score: \nYour Score: ${humanScore}\nComputer Score: ${computerScore}`)
-    if (humanScore > computerScore){
+    console.log(`Final Score: \nYour Score: ${userScore}\nComputer Score: ${computerScore}`)
+    if (userScore > computerScore){
         console.log("You beat the computer!");
-    } else if (computerScore > humanScore){
+    } else if (computerScore > userScore){
         console.log("You lost to the computer");
     } else {
         console.log("You tied with the computer")
